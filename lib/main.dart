@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/app.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_store_app/store_app.dart';
 import 'package:flutter_store_app/core/app/environment.dart';
 
 Future<void> main() async {
@@ -21,5 +22,6 @@ Future<void> main() async {
               projectId: environmentVariables.getFirebaseProductId)) // project_id
       : Firebase.initializeApp();
 
-  runApp(const MyApp());
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown, DeviceOrientation.portraitUp])
+      .then((_) => runApp(const StoreApp()));
 }
