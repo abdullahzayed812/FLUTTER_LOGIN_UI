@@ -3,18 +3,22 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/app.dart';
+import 'package:flutter_store_app/core/app/environment.dart';
 
-void main() {
+Future<void> main() async {
   // Waiting for all configs loaded, and load flutter app.
   WidgetsFlutterBinding.ensureInitialized();
 
+  EnvironmentVariables environmentVariables =
+      await EnvironmentVariables.instance.initialize(environmentType: EnvironmentType.development);
+
   Platform.isAndroid
       ? Firebase.initializeApp(
-          options: const FirebaseOptions(
-              apiKey: "AIzaSyC1EGoynj5mCXzw_iFbds5cJi_OXRybz9I", // current_key
-              appId: "1:182474691900:android:ef5059b5d76d1fd475fa39", // mobilesdk_app_id
-              messagingSenderId: "182474691900", // project_number
-              projectId: "flutterstoreapp-df52d")) // project_id
+          options: FirebaseOptions(
+              apiKey: environmentVariables.getFirebaseApiKey, // current_key
+              appId: environmentVariables.getFirebaseAppId, // mobilesdk_app_id
+              messagingSenderId: environmentVariables.getFirebaseMessagingSenderId, // project_number
+              projectId: environmentVariables.getFirebaseProductId)) // project_id
       : Firebase.initializeApp();
 
   runApp(const MyApp());
