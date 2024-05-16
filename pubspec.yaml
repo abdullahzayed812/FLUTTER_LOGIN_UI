@@ -38,6 +38,7 @@ dependencies:
   firebase_core: ^2.31.0
   flutter_dotenv: ^5.1.0
   connectivity_plus: ^6.0.3
+  flutter_native_splash: ^2.4.0
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +60,14 @@ flutter_launcher_icons:
   adaptive_icon_background: "#ffffff"
   remove_alpha_ios: true
   # adaptive_icon_foreground: "assets/icons/app_icon.png"
+
+flutter_native_splash:
+  color: "#6EC1E5"
+  image: "assets/images/splash_ios_android_11.png"
+
+  android_12:
+    color: "#6EC1E5"
+    image: "assets/images/splash_android_12.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
