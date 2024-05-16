@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
@@ -10,12 +12,13 @@ class ConnectivityController {
 
   ValueNotifier<bool> isConnected = ValueNotifier(false);
 
-  Future<void> initialize() async {
-    final List<ConnectivityResult> result = await Connectivity().checkConnectivity();
+  StreamSubscription<List<ConnectivityResult>> initialize() {
+    // final List<ConnectivityResult> result = await Connectivity().checkConnectivity();
 
-    isInternetConnection(result);
+    StreamSubscription<List<ConnectivityResult>> result =
+        Connectivity().onConnectivityChanged.listen(isInternetConnection);
 
-    Connectivity().onConnectivityChanged.listen(isInternetConnection);
+    return result;
   }
 
   bool isInternetConnection(List<ConnectivityResult> result) {

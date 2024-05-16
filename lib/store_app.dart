@@ -1,11 +1,35 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_store_app/core/app/connectivity_controller.dart';
 import 'package:flutter_store_app/core/app/environment.dart';
 import 'package:flutter_store_app/core/shared/screens/disconnect_screen.dart';
 
-class StoreApp extends StatelessWidget {
+class StoreApp extends StatefulWidget {
   const StoreApp({super.key});
+
+  @override
+  State<StoreApp> createState() => _StoreAppState();
+}
+
+class _StoreAppState extends State<StoreApp> {
+  late StreamSubscription<List<ConnectivityResult>> _connectivityStreamSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _connectivityStreamSubscription = ConnectivityController.instance.initialize();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    _connectivityStreamSubscription.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +48,6 @@ class StoreApp extends StatelessWidget {
                   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                   useMaterial3: true,
                 ),
-                builder: (context, widget) {
-                  ConnectivityController.instance.initialize();
-
-                  return widget!;
-                },
                 home: AppBar(title: const Text('Flutter Demo Home Page')),
               ),
             );
