@@ -41,19 +41,30 @@ class _StoreAppState extends State<StoreApp> {
               designSize: const Size(360, 690),
               minTextAdapt: true,
               child: MaterialApp(
-                title: 'Flutter Demo',
                 debugShowCheckedModeBanner:
                     EnvironmentVariables.instance.getEnvironmentMode == EnvironmentType.development,
                 theme: ThemeData(
                   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                   useMaterial3: true,
                 ),
-                home: AppBar(title: const Text('Flutter Demo Home Page')),
+                home: Scaffold(
+                  appBar: AppBar(
+                    title: const Text("Home Page"),
+                    centerTitle: true,
+                  ),
+                ),
               ),
             );
           } else {
-            return const MaterialApp(
-                title: "No Internet Connection", debugShowCheckedModeBanner: true, home: NoInternetConnectionScreen());
+            return MaterialApp(
+                debugShowCheckedModeBanner: true,
+                home: Scaffold(
+                  appBar: AppBar(
+                    title: const Text("No Internet Connection"),
+                    centerTitle: true,
+                  ),
+                  body: const NoInternetConnectionScreen(),
+                ));
           }
         });
   }
