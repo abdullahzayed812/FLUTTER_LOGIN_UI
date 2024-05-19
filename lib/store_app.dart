@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_store_app/core/app/connectivity_controller.dart';
 import 'package:flutter_store_app/core/app/environment.dart';
+import 'package:flutter_store_app/core/router/app_router.dart';
 import 'package:flutter_store_app/core/shared/screens/disconnect_screen.dart';
 
 class StoreApp extends StatefulWidget {
@@ -47,6 +48,8 @@ class _StoreAppState extends State<StoreApp> {
                   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                   useMaterial3: true,
                 ),
+                onGenerateRoute: AppRouter.onGenerateRoute,
+                initialRoute: AppRouter.homeScreen,
                 home: Scaffold(
                   appBar: AppBar(
                     title: const Text("Home Page"),
