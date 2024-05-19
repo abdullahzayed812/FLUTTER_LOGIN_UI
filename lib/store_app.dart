@@ -7,6 +7,7 @@ import 'package:flutter_store_app/core/app/connectivity_controller.dart';
 import 'package:flutter_store_app/core/app/environment.dart';
 import 'package:flutter_store_app/core/router/app_router.dart';
 import 'package:flutter_store_app/core/shared/screens/disconnect_screen.dart';
+import 'package:flutter_store_app/core/styles/theme/app_theme.dart';
 
 class StoreApp extends StatefulWidget {
   const StoreApp({super.key});
@@ -44,10 +45,7 @@ class _StoreAppState extends State<StoreApp> {
               child: MaterialApp(
                 debugShowCheckedModeBanner:
                     EnvironmentVariables.instance.getEnvironmentMode == EnvironmentType.development,
-                theme: ThemeData(
-                  colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-                  useMaterial3: true,
-                ),
+                theme: AppTheme.darkTheme(),
                 onGenerateRoute: AppRouter.onGenerateRoute,
                 initialRoute: AppRouter.homeScreen,
                 home: Scaffold(

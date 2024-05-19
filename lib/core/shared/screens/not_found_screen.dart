@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/core/styles/app_images.dart';
+import 'package:flutter_store_app/core/styles/images/app_images.dart';
 
 class NotFoundScreen extends StatelessWidget {
   const NotFoundScreen({super.key});
