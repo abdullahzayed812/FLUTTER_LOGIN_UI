@@ -2,13 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_app/core/styles/images/app_images.dart';
 
 class AppImagesWithTheme extends ThemeExtension<AppImagesWithTheme> {
-  const AppImagesWithTheme({required this.imageWithTheme});
+  const AppImagesWithTheme({
+    required this.bigNavBar,
+    required this.homeBg,
+  });
 
-  final String? imageWithTheme;
+  final String? bigNavBar;
+  final String? homeBg;
 
   @override
-  ThemeExtension<AppImagesWithTheme> copyWith({String? imageWithTheme}) {
-    return AppImagesWithTheme(imageWithTheme: imageWithTheme);
+  ThemeExtension<AppImagesWithTheme> copyWith({
+    String? bigNavBar,
+    String? homeBg,
+  }) {
+    return AppImagesWithTheme(
+      bigNavBar: bigNavBar,
+      homeBg: homeBg,
+    );
   }
 
   @override
@@ -17,9 +27,18 @@ class AppImagesWithTheme extends ThemeExtension<AppImagesWithTheme> {
       return this;
     }
 
-    return AppImagesWithTheme(imageWithTheme: imageWithTheme);
+    return AppImagesWithTheme(
+      bigNavBar: bigNavBar,
+      homeBg: homeBg,
+    );
   }
 
-  static const AppImagesWithTheme dark = AppImagesWithTheme(imageWithTheme: AppImages.notFound);
-  static const AppImagesWithTheme light = AppImagesWithTheme(imageWithTheme: AppImages.noInternetConnection);
+  static const AppImagesWithTheme dark = AppImagesWithTheme(
+    bigNavBar: AppImages.bigIconNavBarDark,
+    homeBg: AppImages.homeBgDark,
+  );
+  static const AppImagesWithTheme light = AppImagesWithTheme(
+    bigNavBar: AppImages.bigIconNavBarLight,
+    homeBg: AppImages.homeBgLight,
+  );
 }
