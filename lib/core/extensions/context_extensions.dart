@@ -8,6 +8,8 @@ extension ContextExtension on BuildContext {
 
   AppImagesWithTheme get images => Theme.of(this).extension<AppImagesWithTheme>()!;
 
+  TextStyle get textStyle => Theme.of(this).textTheme.displaySmall!;
+
   String translate(String langKey) {
     return AppLocalizations.of(this)!.translate(langKey).toString();
   }
