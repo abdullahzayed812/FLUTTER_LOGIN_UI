@@ -11,13 +11,13 @@ class AppRouter {
   static Route<void> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case homeScreen:
-        return BaseRoute(page: HomeScreen());
+        return BaseRoute(page: const HomeScreen());
 
       case profileScreen:
-        return BaseRoute(page: ProfileScreen());
+        return BaseRoute(page: const ProfileScreen());
 
       default:
-        return BaseRoute(page: NotFoundScreen());
+        return BaseRoute(page: const NotFoundScreen());
     }
   }
 }

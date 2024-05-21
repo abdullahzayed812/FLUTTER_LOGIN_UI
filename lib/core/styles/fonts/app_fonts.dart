@@ -9,6 +9,12 @@ class FontFamilyHelper {
 
   static const String arabicCairoFont = "Cairo";
   static const String englishPoppingFont = "Popping";
+
+  static String getFontFamily() {
+    String currentLanguage = "ar";
+
+    return currentLanguage == "ar" ? arabicCairoFont : englishPoppingFont;
+  }
 }
 
 class FontWeightHelper {
