@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_store_app/core/app/connectivity_controller.dart';
 import 'package:flutter_store_app/core/app/environment.dart';
-import 'package:flutter_store_app/core/languages/localizations_setup.dart';
+import 'package:flutter_store_app/core/languages/app_localizations_setup.dart';
 import 'package:flutter_store_app/core/router/app_router.dart';
 import 'package:flutter_store_app/core/shared/screens/disconnect_screen.dart';
 import 'package:flutter_store_app/core/styles/theme/app_theme.dart';
@@ -48,9 +48,9 @@ class _StoreAppState extends State<StoreApp> {
                     EnvironmentVariables.instance.getEnvironmentMode == EnvironmentType.development,
                 theme: AppTheme.darkTheme(),
                 locale: const Locale('en'),
-                supportedLocales: LocalizationsSetup.supportedLocales,
-                localizationsDelegates: LocalizationsSetup.localizationsDelegates,
-                localeResolutionCallback: LocalizationsSetup.localeResolutionCallback,
+                supportedLocales: AppLocalizationsSetup.supportedLocales,
+                localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
+                localeResolutionCallback: AppLocalizationsSetup.localeResolutionCallback,
                 onGenerateRoute: AppRouter.onGenerateRoute,
                 initialRoute: AppRouter.homeScreen,
                 home: GestureDetector(
