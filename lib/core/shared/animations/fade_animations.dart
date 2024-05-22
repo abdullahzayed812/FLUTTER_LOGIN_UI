@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 
 class FadeInUpAnimation extends StatelessWidget {
   const FadeInUpAnimation(
-      {super.key, required this.child, required this.duration, this.delay = const Duration(microseconds: 300)});
+      {super.key,
+      required this.child,
+      this.duration = const Duration(milliseconds: 500),
+      this.delay = const Duration(microseconds: 300)});
 
   final Widget child;
   final Duration duration;
@@ -21,7 +24,10 @@ class FadeInUpAnimation extends StatelessWidget {
 
 class FadeInDownAnimation extends StatelessWidget {
   const FadeInDownAnimation(
-      {super.key, required this.child, required this.duration, this.delay = const Duration(microseconds: 300)});
+      {super.key,
+      required this.child,
+      this.duration = const Duration(milliseconds: 500),
+      this.delay = const Duration(microseconds: 300)});
 
   final Widget child;
   final Duration duration;

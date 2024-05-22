@@ -27,7 +27,7 @@ class AppTextFormField extends StatelessWidget {
   final bool readonly;
   final String? Function(String?)? validator;
   final Color? fillColor;
-  final Icon? suffixIcon;
+  final IconButton? suffixIcon;
   final String? hintText;
   final TextInputType? keyboardType;
   final TextStyle? hintStyle;
