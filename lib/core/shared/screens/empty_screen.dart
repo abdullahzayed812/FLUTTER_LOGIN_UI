@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/core/styles/images/app_images.dart';
 
-class NotFoundScreen extends StatelessWidget {
-  const NotFoundScreen({super.key});
+class EmptyScreen extends StatelessWidget {
+  const EmptyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class NotFoundScreen extends StatelessWidget {
       body: Container(
         constraints: const BoxConstraints.expand(),
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppImages.notFound), fit: BoxFit.cover),
+          image: DecorationImage(image: AssetImage(AppImages.emptyScreen), fit: BoxFit.cover),
         ),
       ),
     );

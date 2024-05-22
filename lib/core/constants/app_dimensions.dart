@@ -3,6 +3,7 @@ class AppDimensions {
   static const double smallTextSize = 14.0;
   static const double mediumTextSize = 16.0;
   static const double largeTextSize = 22.0;
+  static const double xLargeTextSize = 24.0;
 
   static const double smallSpacing = 12.0;
   static const double mediumSpacing = 16.0;
@@ -11,4 +12,6 @@ class AppDimensions {
 
   static const double smallRadius = 10.0;
   static const double mediumRadius = 15.0;
+
+  static const double smallButtonWidth = 88.0;
 }

@@ -1,7 +1,7 @@
 class AppImages {
   static const noInternetConnection = 'assets/images/core/no_network.jpg';
   static const pageUnderBuild = 'assets/images/core/page_under_build.jpg';
-  static const notFound = 'assets/images/core/not_found.png';
+  static const emptyScreen = 'assets/images/core/empty_screen.png';
 
   static const userAvatar = 'assets/images/customer/user.png';
   static const bigIconNavBarDark = 'assets/images/customer/big_nav_bar_dark.png';

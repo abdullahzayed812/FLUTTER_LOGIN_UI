@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/core/router/base_route.dart';
-import 'package:flutter_store_app/core/shared/screens/not_found_screen.dart';
-import 'package:flutter_store_app/features/home/home_screen.dart';
-import 'package:flutter_store_app/features/profile/profile_screen.dart';
+import 'package:flutter_store_app/core/shared/screens/empty_screen.dart';
+import 'package:flutter_store_app/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:flutter_store_app/features/auth/presentation/screens/sing_in_screen.dart';
 
 class AppRouter {
-  static const String homeScreen = "HomeScreen";
-  static const String profileScreen = "ProfileScreen";
+  static const String signInScreen = "SignInScreen";
+  static const String signUpScreen = "SignUpScreen";
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case homeScreen:
-        return BaseRoute(page: const HomeScreen());
+      case signInScreen:
+        return BaseRoute(page: const SignInScreen());
 
-      case profileScreen:
-        return BaseRoute(page: const ProfileScreen());
+      case signUpScreen:
+        return BaseRoute(page: const SignUpScreen());
 
       default:
-        return BaseRoute(page: const NotFoundScreen());
+        return BaseRoute(page: const EmptyScreen());
     }
   }
 }

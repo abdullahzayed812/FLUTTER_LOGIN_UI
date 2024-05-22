@@ -39,7 +39,10 @@ class FadeInDownAnimation extends StatelessWidget {
 
 class FadeInLeftAnimation extends StatelessWidget {
   const FadeInLeftAnimation(
-      {super.key, required this.child, required this.duration, this.delay = const Duration(microseconds: 300)});
+      {super.key,
+      required this.child,
+      this.duration = const Duration(milliseconds: 500),
+      this.delay = const Duration(microseconds: 300)});
 
   final Widget child;
   final Duration duration;
@@ -57,7 +60,10 @@ class FadeInLeftAnimation extends StatelessWidget {
 
 class FadeInRightAnimation extends StatelessWidget {
   const FadeInRightAnimation(
-      {super.key, required this.child, required this.duration, this.delay = const Duration(microseconds: 300)});
+      {super.key,
+      required this.child,
+      this.duration = const Duration(milliseconds: 300),
+      this.delay = const Duration(microseconds: 300)});
 
   final Widget child;
   final Duration duration;

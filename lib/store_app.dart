@@ -52,7 +52,7 @@ class _StoreAppState extends State<StoreApp> {
                 localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
                 localeResolutionCallback: AppLocalizationsSetup.localeResolutionCallback,
                 onGenerateRoute: AppRouter.onGenerateRoute,
-                initialRoute: AppRouter.homeScreen,
+                initialRoute: AppRouter.signInScreen,
                 home: GestureDetector(
                   onTap: () {
                     FocusManager.instance.primaryFocus?.unfocus();
