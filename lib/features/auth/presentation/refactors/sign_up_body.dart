@@ -7,11 +7,11 @@ import 'package:flutter_store_app/core/router/app_router.dart';
 import 'package:flutter_store_app/features/auth/presentation/widgets/into_text.dart';
 import 'package:flutter_store_app/features/auth/presentation/widgets/settings_buttons.dart';
 import 'package:flutter_store_app/features/auth/presentation/widgets/sign_in/create_account_text.dart';
-import 'package:flutter_store_app/features/auth/presentation/widgets/sign_in/sign_in_button.dart';
-import 'package:flutter_store_app/features/auth/presentation/widgets/sign_in/sing_in_form.dart';
+import 'package:flutter_store_app/features/auth/presentation/widgets/sign_up/sign_up_button.dart';
+import 'package:flutter_store_app/features/auth/presentation/widgets/sign_up/sign_up_form.dart';
 
-class SignInBody extends StatelessWidget {
-  const SignInBody({super.key});
+class SignUpBody extends StatelessWidget {
+  const SignUpBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +25,17 @@ class SignInBody extends StatelessWidget {
               const SettingsButtons(),
               SizedBox(height: AppDimensions.xLargeSpacing + 20.h),
               InfoText(
-                  title: context.translate(LanguagesKeys.login),
-                  description: context.translate(LanguagesKeys.welcome)),
+                  title: context.translate(LanguagesKeys.signUp),
+                  description: context.translate(LanguagesKeys.signUpWelcome)),
               SizedBox(height: AppDimensions.xLargeSpacing + 10.h),
-              const SignInForm(),
+              const SignUpForm(),
               SizedBox(height: AppDimensions.xLargeSpacing + 10.h),
-              const SignInButton(),
+              const SignUpButton(),
               SizedBox(height: AppDimensions.xLargeSpacing + 10.h),
               CreateAccountText(
-                text: LanguagesKeys.createAccount,
+                text: LanguagesKeys.youHaveAccount,
                 onPressed: () {
-                  context.pushReplacementNamed(AppRouter.signUpScreen);
+                  context.pushReplacementNamed(AppRouter.signInScreen);
                 },
               ),
             ],
