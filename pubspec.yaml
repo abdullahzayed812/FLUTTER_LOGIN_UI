@@ -43,6 +43,8 @@ dependencies:
   flutter_native_splash: ^2.4.0
   flutter_screenutil: ^5.9.1
   animate_do: ^3.3.4
+  flutter_bloc: ^8.1.5
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
