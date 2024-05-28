@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_store_app/core/app/bloc_observer.dart';
+import 'package:flutter_store_app/core/services/shared_preference/shared_preferences.dart';
 import 'package:flutter_store_app/store_app.dart';
 import 'package:flutter_store_app/core/app/environment.dart';
 
@@ -26,6 +27,8 @@ Future<void> main() async {
               projectId:
                   environmentVariables.getFirebaseProductId)) // project_id
       : Firebase.initializeApp();
+
+  await AppSharedPreferences.instance.instantiatePreferences();
 
   Bloc.observer = AppBlocObserver();
 

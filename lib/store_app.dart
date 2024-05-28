@@ -2,11 +2,15 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_store_app/core/app/connectivity_controller.dart';
+import 'package:flutter_store_app/core/app/cubit/app_cubit.dart';
 import 'package:flutter_store_app/core/app/environment.dart';
 import 'package:flutter_store_app/core/languages/app_localizations_setup.dart';
 import 'package:flutter_store_app/core/router/app_router.dart';
+import 'package:flutter_store_app/core/services/shared_preference/shared_preferences.dart';
+import 'package:flutter_store_app/core/services/shared_preference/shared_preferences_keys.dart';
 import 'package:flutter_store_app/core/shared/screens/disconnect_screen.dart';
 import 'package:flutter_store_app/core/styles/theme/app_theme.dart';
 
@@ -18,13 +22,15 @@ class StoreApp extends StatefulWidget {
 }
 
 class _StoreAppState extends State<StoreApp> {
-  late StreamSubscription<List<ConnectivityResult>> _connectivityStreamSubscription;
+  late StreamSubscription<List<ConnectivityResult>>
+      _connectivityStreamSubscription;
 
   @override
   void initState() {
     super.initState();
 
-    _connectivityStreamSubscription = ConnectivityController.instance.initialize();
+    _connectivityStreamSubscription =
+        ConnectivityController.instance.initialize();
   }
 
   @override
@@ -40,32 +46,44 @@ class _StoreAppState extends State<StoreApp> {
         valueListenable: ConnectivityController.instance.isConnected,
         builder: (_, value, __) {
           if (value) {
-            return ScreenUtilInit(
-              designSize: const Size(360, 690),
-              minTextAdapt: true,
-              child: MaterialApp(
-                debugShowCheckedModeBanner:
-                    EnvironmentVariables.instance.getEnvironmentMode == EnvironmentType.development,
-                theme: AppTheme.darkTheme(),
-                locale: const Locale('en'),
-                supportedLocales: AppLocalizationsSetup.supportedLocales,
-                localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
-                localeResolutionCallback: AppLocalizationsSetup.localeResolutionCallback,
-                onGenerateRoute: AppRouter.onGenerateRoute,
-                initialRoute: AppRouter.signInScreen,
-                home: GestureDetector(
-                  onTap: () {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                  },
-                  child: Scaffold(
-                    appBar: AppBar(
-                      title: const Text("Home Page"),
-                      centerTitle: true,
-                    ),
-                  ),
-                ),
-              ),
-            );
+            return BlocProvider<AppCubit>(
+                create: (context) => AppCubit(),
+                child: ScreenUtilInit(
+                  designSize: const Size(360, 690),
+                  minTextAdapt: true,
+                  child: BlocBuilder(builder: (context, state) {
+                    final bool? savedTheme = AppSharedPreferences.instance
+                        .getBool(SharedPreferencesKeys.themeMode);
+
+                    context.read<AppCubit>().toggleTheme(themeMode: savedTheme);
+
+                    return MaterialApp(
+                      debugShowCheckedModeBanner:
+                          EnvironmentVariables.instance.getEnvironmentMode ==
+                              EnvironmentType.development,
+                      theme: AppTheme.darkTheme(),
+                      locale: const Locale('en'),
+                      supportedLocales: AppLocalizationsSetup.supportedLocales,
+                      localizationsDelegates:
+                          AppLocalizationsSetup.localizationsDelegates,
+                      localeResolutionCallback:
+                          AppLocalizationsSetup.localeResolutionCallback,
+                      onGenerateRoute: AppRouter.onGenerateRoute,
+                      initialRoute: AppRouter.signInScreen,
+                      home: GestureDetector(
+                        onTap: () {
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        },
+                        child: Scaffold(
+                          appBar: AppBar(
+                            title: const Text("Home Page"),
+                            centerTitle: true,
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+                ));
           } else {
             return MaterialApp(
                 debugShowCheckedModeBanner: true,

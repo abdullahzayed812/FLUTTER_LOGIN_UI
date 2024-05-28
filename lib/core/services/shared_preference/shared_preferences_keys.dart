@@ -1,3 +1,3 @@
 class SharedPreferencesKeys {
-  static const String themeMode = "mode";
+  static const String themeMode = "themeMode";
 }
