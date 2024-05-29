@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_store_app/core/app/cubit/app_cubit.dart';
+import 'package:flutter_store_app/core/app/cubit/app_state.dart';
 import 'package:flutter_store_app/core/constants/app_dimensions.dart';
 import 'package:flutter_store_app/core/extensions/context_extensions.dart';
 import 'package:flutter_store_app/core/languages/languages_keys.dart';
@@ -16,12 +19,17 @@ class SettingsButtons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        FadeInLeftAnimation(
-          child: GradientButton(
-            child: const Icon(Icons.light_mode_rounded, color: Colors.white),
-            onPressed: () {},
-          ),
-        ),
+        BlocBuilder<AppCubit, AppState>(builder: (context, state) {
+          return FadeInLeftAnimation(
+            child: GradientButton(
+              child: Icon(state is AppStateLoaded && state.isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
+                  color: Colors.white),
+              onPressed: () {
+                context.read<AppCubit>().toggleTheme();
+              },
+            ),
+          );
+        }),
         FadeInRightAnimation(
           child: GradientButton(
             width: AppDimensions.smallButtonWidth.w,

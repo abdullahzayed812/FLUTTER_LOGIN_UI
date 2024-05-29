@@ -10,15 +10,11 @@ class AppCubit extends Cubit<AppState> {
 
   Future<void> toggleTheme({bool? themeMode}) async {
     if (themeMode != null) {
-      isDark = themeMode;
-
       emit(AppStateLoaded(themeMode));
     } else {
-      isDark = !isDark;
-
       await AppSharedPreferences.instance
-          .setBool(SharedPreferencesKeys.themeMode, isDark)
-          .then((_) => emit(AppStateLoaded(isDark)));
+          .setBool(SharedPreferencesKeys.themeMode, !isDark)
+          .then((_) => emit(AppStateLoaded(!isDark)));
     }
   }
 }
