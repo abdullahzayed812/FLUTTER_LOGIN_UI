@@ -37,6 +37,7 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const SizedBox(height: AppDimensions.largeSpacing),
           FadeInDownAnimation(
+            delay: const Duration(microseconds: 400),
             child: AppTextFormField(
               controller: TextEditingController(),
               hintText: context.translate(LanguagesKeys.email),
@@ -52,6 +53,7 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const SizedBox(height: AppDimensions.largeSpacing),
           FadeInDownAnimation(
+            delay: const Duration(microseconds: 500),
             child: AppTextFormField(
               controller: TextEditingController(),
               hintText: context.translate(LanguagesKeys.password),

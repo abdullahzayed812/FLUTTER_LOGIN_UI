@@ -1,5 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/core/languages/languages_keys.dart';
+import 'package:flutter_store_app/core/services/shared_preference/shared_preferences.dart';
+
+final String? _currentAppLanguage = AppSharedPreferences.instance.getString(LanguagesKeys.language);
 
 class FadeInUpAnimation extends StatelessWidget {
   const FadeInUpAnimation(
@@ -56,11 +60,17 @@ class FadeInLeftAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeInLeft(
-      duration: duration,
-      delay: delay,
-      child: child,
-    );
+    return _currentAppLanguage == "en"
+        ? FadeInLeft(
+            duration: duration,
+            delay: delay,
+            child: child,
+          )
+        : FadeInRight(
+            duration: duration,
+            delay: delay,
+            child: child,
+          );
   }
 }
 
@@ -77,10 +87,16 @@ class FadeInRightAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeInRight(
-      duration: duration,
-      delay: delay,
-      child: child,
-    );
+    return _currentAppLanguage == "en"
+        ? FadeInRight(
+            duration: duration,
+            delay: delay,
+            child: child,
+          )
+        : FadeInLeft(
+            duration: duration,
+            delay: delay,
+            child: child,
+          );
   }
 }

@@ -1,9 +1,17 @@
+import 'package:flutter/material.dart';
+
 abstract class AppState {}
 
 class AppStateInitial extends AppState {}
 
-class AppStateLoaded extends AppState {
+class AppThemeLoaded extends AppState {
   final bool isDark;
 
-  AppStateLoaded(this.isDark);
+  AppThemeLoaded(this.isDark);
+}
+
+class AppLanguageLoaded extends AppState {
+  final Locale locale;
+
+  AppLanguageLoaded(this.locale);
 }

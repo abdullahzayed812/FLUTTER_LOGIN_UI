@@ -37,6 +37,7 @@ class _SignInFormState extends State<SignInForm> {
           ),
           const SizedBox(height: AppDimensions.largeSpacing),
           FadeInDownAnimation(
+            delay: const Duration(microseconds: 400),
             child: AppTextFormField(
               controller: TextEditingController(),
               hintText: context.translate(LanguagesKeys.password),

@@ -13,14 +13,13 @@ class SignUpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FadeInDownAnimation(
+      delay: const Duration(microseconds: 700),
       child: GradientButton(
         width: double.infinity,
         onPressed: () {},
         child: AppText(
           text: context.translate(LanguagesKeys.signUp),
-          style: context.textStyle.copyWith(
-              fontSize: AppDimensions.largeTextSize,
-              fontWeight: FontWeightHelper.bold),
+          style: context.textStyle.copyWith(fontSize: AppDimensions.largeTextSize, fontWeight: FontWeightHelper.bold),
         ),
       ),
     );

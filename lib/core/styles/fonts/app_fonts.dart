@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/core/languages/languages_keys.dart';
+import 'package:flutter_store_app/core/services/shared_preference/shared_preferences.dart';
 
 class FontFamilyHelper {
   FontFamilyHelper._privateFontFamilyHelperConstructor();
@@ -10,11 +12,8 @@ class FontFamilyHelper {
   static const String arabicCairoFont = "Cairo";
   static const String englishPoppingFont = "Popping";
 
-  static String getFontFamily() {
-    String currentLanguage = "ar";
-
-    return currentLanguage == "ar" ? arabicCairoFont : englishPoppingFont;
-  }
+  static String get getFontFamily =>
+      AppSharedPreferences.instance.getString(LanguagesKeys.language) == "ar" ? arabicCairoFont : englishPoppingFont;
 }
 
 class FontWeightHelper {

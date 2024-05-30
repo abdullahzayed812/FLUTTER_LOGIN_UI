@@ -34,6 +34,7 @@ class _StoreAppState extends State<StoreApp> {
     final bool? savedTheme = AppSharedPreferences.instance.getBool(SharedPreferencesKeys.themeMode);
 
     _appCubit.toggleTheme(themeMode: savedTheme);
+    _appCubit.getSavedLanguage();
 
     _connectivityStreamSubscription = ConnectivityController.instance.initialize();
   }
@@ -62,8 +63,8 @@ class _StoreAppState extends State<StoreApp> {
                       return MaterialApp(
                         debugShowCheckedModeBanner:
                             EnvironmentVariables.instance.getEnvironmentMode == EnvironmentType.development,
-                        theme: state is AppStateLoaded && state.isDark ? AppTheme.darkTheme() : AppTheme.lightTheme(),
-                        locale: const Locale('en'),
+                        theme: _appCubit.isDark ? AppTheme.darkTheme() : AppTheme.lightTheme(),
+                        locale: state is AppLanguageLoaded ? state.locale : null,
                         supportedLocales: AppLocalizationsSetup.supportedLocales,
                         localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
                         localeResolutionCallback: AppLocalizationsSetup.localeResolutionCallback,

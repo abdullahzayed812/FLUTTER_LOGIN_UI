@@ -13,6 +13,7 @@ class SignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FadeInDownAnimation(
+      delay: const Duration(microseconds: 500),
       child: GradientButton(
         width: double.infinity,
         onPressed: () {},

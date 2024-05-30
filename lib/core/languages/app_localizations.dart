@@ -28,6 +28,8 @@ class AppLocalizations {
   }
 
   String translate(String key) => _localizedStrings[key] ?? "";
+
+  bool get isEnglish => locale!.languageCode == "en";
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

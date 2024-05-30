@@ -16,7 +16,7 @@ class AppTheme {
         displaySmall: TextStyle(
           fontSize: AppDimensions.smallTextSize,
           color: DarkColors.white,
-          fontFamily: FontFamilyHelper.getFontFamily(),
+          fontFamily: FontFamilyHelper.getFontFamily,
         ),
       ),
     );
@@ -31,7 +31,7 @@ class AppTheme {
         displaySmall: TextStyle(
           fontSize: AppDimensions.smallTextSize,
           color: LightColors.black,
-          fontFamily: FontFamilyHelper.getFontFamily(),
+          fontFamily: FontFamilyHelper.getFontFamily,
         ),
       ),
     );
