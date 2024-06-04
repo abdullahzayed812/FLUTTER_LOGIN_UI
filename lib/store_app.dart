@@ -64,7 +64,7 @@ class _StoreAppState extends State<StoreApp> {
                         debugShowCheckedModeBanner:
                             EnvironmentVariables.instance.getEnvironmentMode == EnvironmentType.development,
                         theme: _appCubit.isDark ? AppTheme.darkTheme() : AppTheme.lightTheme(),
-                        locale: state is AppLanguageLoaded ? state.locale : null,
+                        locale: state is AppLanguageLoaded ? state.locale : const Locale("en"),
                         supportedLocales: AppLocalizationsSetup.supportedLocales,
                         localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
                         localeResolutionCallback: AppLocalizationsSetup.localeResolutionCallback,
